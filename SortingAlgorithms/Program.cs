@@ -1,5 +1,6 @@
 ﻿using SortingAlgorithms.Algorithms;
 using SortingAlgorithms.Enums;
+using SortingAlgorithms.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace SortingAlgorithms
             Console.WriteLine("***Sorting Algorithms***");
             Console.WriteLine("-------------------------");
             Console.WriteLine(" 1. Selection sort");
+            Console.WriteLine(" 2. Bubble sort");
             Console.WriteLine("-------------------------");
             Console.WriteLine("\n*Press the searial number from the above to select sorting algorithm: ");
 
@@ -40,19 +42,27 @@ namespace SortingAlgorithms
                 intArray[i] = Convert.ToInt32(strArray[i]);
             }
 
-            switch(algoritmType)
+            ISortingAlgorithm sortProvider;
+
+            switch (algoritmType)
             {
                 case SortAlgorithmTypes.Selection:
-                    SelectionSort.Sort(intArray, intArray.Length, Enums.SortTypes.Asc);
-                    timeCompexity = SelectionSort.GetTimeComplexity();
-                    spaceComplexity = SelectionSort.GetSpaceComplexity();
+                    sortProvider = new SelectionSort();
+                    break;
+
+                case SortAlgorithmTypes.Bubble:
+                    sortProvider = new BubbleSort();
                     break;
 
                 default:
-                    SelectionSort.Sort(intArray, intArray.Length, Enums.SortTypes.Asc);
+                    sortProvider = new SelectionSort();
                     break;
 
             }
+
+            sortProvider.Sort(intArray, intArray.Length, Enums.SortTypes.Asc);
+            timeCompexity = sortProvider.GetTimeComplexity();
+            spaceComplexity = sortProvider.GetSpaceComplexity();
 
             //Printing the output to the console
             Console.Write("\nSorted Array(Order:Asc): ");

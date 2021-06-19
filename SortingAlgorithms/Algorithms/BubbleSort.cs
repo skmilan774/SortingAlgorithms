@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms
 {
-    class SelectionSort : ISortingAlgorithm
+    public class BubbleSort : ISortingAlgorithm
     {
         /// <summary>
         /// The methods will return the sorted array.
@@ -29,7 +29,7 @@ namespace SortingAlgorithms.Algorithms
         public Dictionary<string, string> GetTimeComplexity()
         {
             return new Dictionary<string, string>() {
-                { "Best", "O(n^2)"},
+                { "Best", "O(n)"},
                 { "Average", "O(n^2)" },
                 { "Worst", "O(n^2)" }
             };
@@ -48,15 +48,20 @@ namespace SortingAlgorithms.Algorithms
         {
             for (int outerPointer = 0; outerPointer < (arrayLength - 1); outerPointer++)
             {
-                for (int innerPointer = (outerPointer + 1); innerPointer < arrayLength; innerPointer++)
+                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
+                for (int innerPointer = 0; innerPointer < arrayLength -1; innerPointer++)
                 {
-                    if (array[outerPointer] > array[innerPointer])
+                    if (array[innerPointer] > array[innerPointer + 1])
                     {
-                        int temp = array[innerPointer];
-                        array[innerPointer] = array[outerPointer];
-                        array[outerPointer] = temp;
-                    }
+                        int temp = array[innerPointer +1];
+                        array[innerPointer + 1] = array[innerPointer];
+                        array[innerPointer] = temp;
+                        flag = true;
+                    }                                        
                 }
+
+                if (flag == false)
+                    break;
             }
 
             return array;
@@ -67,21 +72,23 @@ namespace SortingAlgorithms.Algorithms
         {
             for (int outerPointer = 0; outerPointer < (arrayLength - 1); outerPointer++)
             {
-                for (int innerPointer = (outerPointer + 1); innerPointer < arrayLength; innerPointer++)
+                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
+                for (int innerPointer = 0; innerPointer < arrayLength - 1; innerPointer++)
                 {
-                    if (array[outerPointer] < array[innerPointer])
+                    if (array[innerPointer] < array[innerPointer + 1])
                     {
-                        int temp = array[innerPointer];
-                        array[innerPointer] = array[outerPointer];
-                        array[outerPointer] = temp;
+                        int temp = array[innerPointer + 1];
+                        array[innerPointer + 1] = array[innerPointer];
+                        array[innerPointer] = temp;
+                        flag = true;
                     }
                 }
+
+                if (flag == false)
+                    break;
             }
 
             return array;
         }
-
-
-
     }
 }

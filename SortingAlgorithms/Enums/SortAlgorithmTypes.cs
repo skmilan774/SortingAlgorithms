@@ -9,9 +9,12 @@ namespace SortingAlgorithms.Enums
     public enum SortAlgorithmTypes
     {
         Selection = 1,
-        Insertion = 2,
-        Bubble = 3,
+        Bubble = 2,
+        Insertion = 3,     
         Merge = 4,
-        Quick = 5
+        Quick = 5,
+        Heap =6,
+        Radix =7,
+        Bucket=8
     }
 }

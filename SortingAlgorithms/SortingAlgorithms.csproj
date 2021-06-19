@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BubbleSort.cs" />
     <Compile Include="Algorithms\SelectionSort.cs" />
     <Compile Include="Enums\SortAlgorithmTypes.cs" />
     <Compile Include="Enums\SortTypes.cs" />
+    <Compile Include="Interfaces\ISortingAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
