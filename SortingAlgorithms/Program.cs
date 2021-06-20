@@ -16,11 +16,13 @@ namespace SortingAlgorithms
         {
             Dictionary<string, string> timeCompexity = new Dictionary<string, string>();
             Dictionary<string, string> spaceComplexity = new Dictionary<string, string>();
+            Enums.SortTypes sortType = SortTypes.Asc;
 
             Console.WriteLine("***Sorting Algorithms***");
             Console.WriteLine("-------------------------");
             Console.WriteLine(" 1. Selection sort");
             Console.WriteLine(" 2. Bubble sort");
+            Console.WriteLine(" 3. Insertion sort");
             Console.WriteLine("-------------------------");
             Console.WriteLine("\n*Press the searial number from the above to select sorting algorithm: ");
 
@@ -54,13 +56,17 @@ namespace SortingAlgorithms
                     sortProvider = new BubbleSort();
                     break;
 
+                case SortAlgorithmTypes.Insertion:
+                    sortProvider = new InsertionSort();
+                    break;
+
                 default:
                     sortProvider = new SelectionSort();
                     break;
 
             }
 
-            sortProvider.Sort(intArray, intArray.Length, Enums.SortTypes.Asc);
+            sortProvider.Sort(intArray, intArray.Length, sortType);
             timeCompexity = sortProvider.GetTimeComplexity();
             spaceComplexity = sortProvider.GetSpaceComplexity();
 

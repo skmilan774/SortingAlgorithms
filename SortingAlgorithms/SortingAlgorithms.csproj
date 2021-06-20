@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\BubbleSort.cs" />
+    <Compile Include="Algorithms\InsertionSort.cs" />
     <Compile Include="Algorithms\SelectionSort.cs" />
     <Compile Include="Enums\SortAlgorithmTypes.cs" />
     <Compile Include="Enums\SortTypes.cs" />

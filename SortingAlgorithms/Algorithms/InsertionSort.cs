@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms
 {
-    class BubbleSort : ISortingAlgorithm
+    class InsertionSort : ISortingAlgorithm
     {
         /// <summary>
         /// The methods will return the sorted array.
-        /// Time complexity = O(n^2) for all the cases(best/average/worst) and Space complexity = O(1)
         /// </summary>
         /// <param name="array"></param>
         /// <param name="arrayLength"></param>
@@ -46,22 +45,18 @@ namespace SortingAlgorithms.Algorithms
 
         private static int[] SortAsc(int[] array, int arrayLength)
         {
-            for (int outerPointer = 0; outerPointer < (arrayLength - 1); outerPointer++)
+            for(int unSortedSubArrIndex = 1; unSortedSubArrIndex <= arrayLength - 1; unSortedSubArrIndex++)
             {
-                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
-                for (int innerPointer = 0; innerPointer < arrayLength -1; innerPointer++)
+                int sortedSubArrayIndex = unSortedSubArrIndex - 1;
+                int selectedElementFromUnsortedSubArray = array[unSortedSubArrIndex];
+
+                while(sortedSubArrayIndex >= 0 && array[sortedSubArrayIndex] > selectedElementFromUnsortedSubArray)
                 {
-                    if (array[innerPointer] > array[innerPointer + 1])
-                    {
-                        int temp = array[innerPointer +1];
-                        array[innerPointer + 1] = array[innerPointer];
-                        array[innerPointer] = temp;
-                        flag = true;
-                    }                                        
+                    array[sortedSubArrayIndex + 1] = array[sortedSubArrayIndex];
+                    sortedSubArrayIndex--;
                 }
 
-                if (flag == false)
-                    break;
+                array[sortedSubArrayIndex + 1] = selectedElementFromUnsortedSubArray;
             }
 
             return array;
@@ -70,22 +65,18 @@ namespace SortingAlgorithms.Algorithms
 
         private static int[] SortDesc(int[] array, int arrayLength)
         {
-            for (int outerPointer = 0; outerPointer < (arrayLength - 1); outerPointer++)
+            for (int unSortedSubArrIndex = 1; unSortedSubArrIndex <= arrayLength - 1; unSortedSubArrIndex++)
             {
-                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
-                for (int innerPointer = 0; innerPointer < arrayLength - 1; innerPointer++)
+                int sortedSubArrayIndex = unSortedSubArrIndex - 1;
+                int selectedElementFromUnsortedSubArray = array[unSortedSubArrIndex];
+
+                while (sortedSubArrayIndex >= 0 && array[sortedSubArrayIndex] < selectedElementFromUnsortedSubArray)
                 {
-                    if (array[innerPointer] < array[innerPointer + 1])
-                    {
-                        int temp = array[innerPointer + 1];
-                        array[innerPointer + 1] = array[innerPointer];
-                        array[innerPointer] = temp;
-                        flag = true;
-                    }
+                    array[sortedSubArrayIndex + 1] = array[sortedSubArrayIndex];
+                    sortedSubArrayIndex--;
                 }
 
-                if (flag == false)
-                    break;
+                array[sortedSubArrayIndex + 1] = selectedElementFromUnsortedSubArray;
             }
 
             return array;
