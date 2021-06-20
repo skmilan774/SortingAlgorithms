@@ -50,11 +50,17 @@ namespace SortingAlgorithms.Algorithms
                 int sortedSubArrayIndex = unSortedSubArrIndex - 1;
                 int selectedElementFromUnsortedSubArray = array[unSortedSubArrIndex];
 
-                while(sortedSubArrayIndex >= 0 && array[sortedSubArrayIndex] > selectedElementFromUnsortedSubArray)
+                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
+
+                while (sortedSubArrayIndex >= 0 && array[sortedSubArrayIndex] > selectedElementFromUnsortedSubArray)
                 {
                     array[sortedSubArrayIndex + 1] = array[sortedSubArrayIndex];
                     sortedSubArrayIndex--;
+                    flag = true;
                 }
+
+                if (flag == false)
+                    break;
 
                 array[sortedSubArrayIndex + 1] = selectedElementFromUnsortedSubArray;
             }
@@ -67,6 +73,7 @@ namespace SortingAlgorithms.Algorithms
         {
             for (int unSortedSubArrIndex = 1; unSortedSubArrIndex <= arrayLength - 1; unSortedSubArrIndex++)
             {
+                bool flag = false;  //Improvement: If the array is already in sorted order(best case) then there will be no swap and flag will not set
                 int sortedSubArrayIndex = unSortedSubArrIndex - 1;
                 int selectedElementFromUnsortedSubArray = array[unSortedSubArrIndex];
 
@@ -74,7 +81,11 @@ namespace SortingAlgorithms.Algorithms
                 {
                     array[sortedSubArrayIndex + 1] = array[sortedSubArrayIndex];
                     sortedSubArrayIndex--;
+                    flag = true;
                 }
+
+                if (flag == false)
+                    break;
 
                 array[sortedSubArrayIndex + 1] = selectedElementFromUnsortedSubArray;
             }
