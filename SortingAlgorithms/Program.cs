@@ -23,6 +23,7 @@ namespace SortingAlgorithms
             Console.WriteLine(" 1. Selection sort");
             Console.WriteLine(" 2. Bubble sort");
             Console.WriteLine(" 3. Insertion sort");
+            Console.WriteLine(" 4. Merge sort");
             Console.WriteLine("-------------------------");
             Console.WriteLine("\n*Press the searial number from the above to select sorting algorithm: ");
 
@@ -58,6 +59,10 @@ namespace SortingAlgorithms
 
                 case SortAlgorithmTypes.Insertion:
                     sortProvider = new InsertionSort();
+                    break;
+
+                case SortAlgorithmTypes.Merge:
+                    sortProvider = new MergeSort();
                     break;
 
                 default:
